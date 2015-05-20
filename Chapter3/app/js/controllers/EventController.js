@@ -6,9 +6,14 @@ eventsApp.controller('EventController',
         $scope.snippet = '<span style="color: red">hi there</span>';
         $scope.boolValue = true;
         $scope.sortOrder = 'name';
-        eventData.getEvent(function(data) {
-            $scope.event = data;
-        });
+        eventData.getEvent().then(
+            function(event) {
+                $scope.event = event;
+            },
+            function(statusCode) {
+                console.log(statusCode);
+            }
+        );
 
         $scope.upVoteSession = function(session) {
             session.upVoteCount++;
