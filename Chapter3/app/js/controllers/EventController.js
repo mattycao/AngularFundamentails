@@ -6,9 +6,11 @@ eventsApp.controller('EventController',
         $scope.snippet = '<span style="color: red">hi there</span>';
         $scope.boolValue = true;
         $scope.sortOrder = 'name';
-        eventData.getEvent().then(
+        $scope.event = eventData.getEvent().
+            $promise.then(
             function(event) {
                 $scope.event = event;
+                console.log(event);
             },
             function(statusCode) {
                 console.log(statusCode);
